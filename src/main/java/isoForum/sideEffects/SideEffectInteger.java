@@ -1,4 +1,4 @@
-package isoForum.immutableData;
+package isoForum.sideEffects;
 
 /**
  * Created by gen on 16.06.2017.

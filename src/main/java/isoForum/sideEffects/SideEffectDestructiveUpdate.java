@@ -1,4 +1,4 @@
-package isoForum.immutableData;
+package isoForum.sideEffects;
 
 /**
  * Created by gen on 19.06.2017.
@@ -13,12 +13,21 @@ public class SideEffectDestructiveUpdate {
         }
     }
 
-    static Insurance link(Insurance a, Insurance b) {
+    // Side effects
+    Insurance link(Insurance a, Insurance b) {
+        if(a == null) return b;
         Insurance insurance = a;
         while (insurance.includedInsurance != null) {
             insurance = insurance.includedInsurance;
         }
         insurance.includedInsurance = b;
         return a;
+    }
+
+
+
+    // Functional Style
+    Insurance append(Insurance a, Insurance b) {
+        return a==null ? b : new Insurance(a.price, append(a.includedInsurance, b));
     }
 }
